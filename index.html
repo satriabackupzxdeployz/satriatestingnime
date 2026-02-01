@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SatriaNime - Streaming Anime</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="text-gray-100 flex flex-col min-h-screen">
+
+    <nav class="bg-black/90 backdrop-blur-md sticky top-0 z-40 border-b border-gray-800">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="loadHome()">
+                <i class="fas fa-dragon text-red-600 text-2xl"></i>
+                <h1 class="text-2xl font-bold tracking-tighter">Satria<span class="text-red-600">Nime</span></h1>
+            </div>
+
+            <form onsubmit="handleSearch(event)" class="relative">
+                <input type="text" id="search-input" placeholder="Cari Anime..." 
+                    class="bg-gray-800 text-sm px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-red-600 w-32 md:w-64 transition-all">
+                <button type="submit" class="absolute right-3 top-2 text-gray-400 hover:text-white">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-6 flex-grow" id="main-content">
+        </main>
+
+    <footer class="bg-black py-6 text-center text-sm text-gray-600 border-t border-gray-800 mt-auto">
+        <p>SatriaNime &copy; 2024. Code by Mobinime API.</p>
+    </footer>
+
+    <div id="loader" class="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <div id="video-modal" class="fixed inset-0 z-50 bg-black/95 hidden flex flex-col justify-center items-center p-4">
+        <div class="w-full max-w-5xl bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-800 relative">
+            
+            <div class="flex justify-between items-center p-4 bg-gray-900 border-b border-gray-800">
+                <h3 id="video-title" class="text-red-500 font-semibold truncate pr-4">Title</h3>
+                <button onclick="closePlayer()" class="text-white hover:text-red-500 text-xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="relative pt-[56.25%] bg-black">
+                <video id="video-player" controls class="absolute top-0 left-0 w-full h-full" poster=""></video>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
